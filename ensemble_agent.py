@@ -378,6 +378,7 @@ def step5_validate(
 # ══════════════════════════════════════════════════════════════
 def step6_submission(
         test_ensemble: dict,
+        ensemble_results: dict,
         best_method: str,
         best_thr: float,
         target: str,
@@ -390,9 +391,14 @@ def step6_submission(
     if not test_ensemble:
         log("  ⚠  테스트셋 없음 — OOF 확률로 submission.csv 생성 (데모)")
         train_df = pd.read_csv(train_path)
+        if "PassengerId" in train_df.columns:
+            pid = train_df["PassengerId"].values
+        else:
+            pid = np.arange(892, 892 + len(train_df))
+        oof_prob = ensemble_results[best_method]["oof"]
         sub = pd.DataFrame({
-            "PassengerId": range(892, 892 + len(train_df)),
-            target: (np.zeros(len(train_df)) >= best_thr).astype(int),
+            "PassengerId": pid,
+            target: (oof_prob >= best_thr).astype(int),
         })
     else:
         test_prob = test_ensemble[best_method]
@@ -502,7 +508,7 @@ def run(train_path: str, target: str, test_path: str | None = None) -> None:
     )
     best_method, best_thr, best_auc   = step4_threshold_opt(ensemble_results, y)
     step5_validate(oof_probs, ensemble_results, best_method, best_thr, y)
-    step6_submission(test_ensemble, best_method, best_thr, target, train_path, test_path)
+    step6_submission(test_ensemble, ensemble_results, best_method, best_thr, target, train_path, test_path)
     step7_report(ensemble_results, model_aucs, best_method, best_thr, best_auc)
 
     log("\n" + "=" * 60)
