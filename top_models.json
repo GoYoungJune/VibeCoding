@@ -1,0 +1,65 @@
+{
+  "generated_at": "2026-05-29 06:57:02",
+  "data_path": "train_processed.csv",
+  "cv_folds": 5,
+  "random_state": 42,
+  "top_models": [
+    {
+      "rank": 1,
+      "model": "RandomForest",
+      "cv_auc_mean": 0.8725,
+      "cv_auc_std": 0.0238,
+      "cv_f1_mean": 0.7489,
+      "cv_precision_mean": 0.8201,
+      "cv_recall_mean": 0.6899,
+      "train_time_sec": 3.91
+    },
+    {
+      "rank": 2,
+      "model": "CatBoost",
+      "cv_auc_mean": 0.8702,
+      "cv_auc_std": 0.0193,
+      "cv_f1_mean": 0.7681,
+      "cv_precision_mean": 0.8038,
+      "cv_recall_mean": 0.7368,
+      "train_time_sec": 1.69
+    },
+    {
+      "rank": 3,
+      "model": "XGBoost",
+      "cv_auc_mean": 0.8701,
+      "cv_auc_std": 0.0246,
+      "cv_f1_mean": 0.7723,
+      "cv_precision_mean": 0.802,
+      "cv_recall_mean": 0.7455,
+      "train_time_sec": 0.79
+    }
+  ],
+  "all_models": [
+    {
+      "model": "RandomForest",
+      "cv_auc_mean": 0.8725,
+      "cv_f1_mean": 0.7489
+    },
+    {
+      "model": "CatBoost",
+      "cv_auc_mean": 0.8702,
+      "cv_f1_mean": 0.7681
+    },
+    {
+      "model": "XGBoost",
+      "cv_auc_mean": 0.8701,
+      "cv_f1_mean": 0.7723
+    },
+    {
+      "model": "LightGBM",
+      "cv_auc_mean": 0.8632,
+      "cv_f1_mean": 0.7625
+    },
+    {
+      "model": "LogisticRegression",
+      "cv_auc_mean": 0.8518,
+      "cv_f1_mean": 0.7193
+    }
+  ]
+}

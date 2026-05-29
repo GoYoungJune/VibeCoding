@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-05-29 07:26:21",
+  "cv_folds": 5,
+  "random_state": 42,
+  "models": [
+    {
+      "model": "RandomForest",
+      "n_trials": 50,
+      "baseline_auc": 0.8725,
+      "tuned_auc": 0.8774,
+      "delta": 0.0049,
+      "elapsed_sec": 93.9,
+      "best_params": {
+        "n_estimators": 583,
+        "max_depth": 24,
+        "min_samples_split": 10,
+        "min_samples_leaf": 2,
+        "max_features": 0.8
+      }
+    },
+    {
+      "model": "CatBoost",
+      "n_trials": 50,
+      "baseline_auc": 0.8702,
+      "tuned_auc": 0.8779,
+      "delta": 0.0077,
+      "elapsed_sec": 45.6,
+      "best_params": {
+        "iterations": 350,
+        "depth": 3,
+        "learning_rate": 0.021364121575281107,
+        "l2_leaf_reg": 0.0005633001174882986,
+        "bagging_temperature": 0.09385883940525178,
+        "border_count": 196
+      }
+    },
+    {
+      "model": "XGBoost",
+      "n_trials": 50,
+      "baseline_auc": 0.8701,
+      "tuned_auc": 0.8773,
+      "delta": 0.0072,
+      "elapsed_sec": 14.3,
+      "best_params": {
+        "n_estimators": 942,
+        "max_depth": 10,
+        "learning_rate": 0.03722102511754563,
+        "subsample": 0.899687114155644,
+        "colsample_bytree": 0.8903428788980572,
+        "min_child_weight": 7,
+        "reg_alpha": 3.506550474682319e-07,
+        "reg_lambda": 1.171868283307846e-08
+      }
+    }
+  ],
+  "overall_best": "CatBoost",
+  "overall_best_auc": 0.8779
+}
